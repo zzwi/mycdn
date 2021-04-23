@@ -1,0 +1,54 @@
+.header-inner {
+  background: rgba(255,255,255,0.85);
+  border-radius: 0px 0px 30px 30px; //边框圆角
+  box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+  width: $sidebar-desktop;
+
+  +tablet-mobile() {
+    border-radius: initial;
+    width: auto;
+  }
+}
+
+.main {
+  // Make sure that .header and .main-inner are the same height
+  // Required for .sidebar `position: sticky;`
+  align-items: stretch;
+  display: flex;
+  justify-content: space-between;
+  main-container();
+
+  if (hexo-config('sidebar.position') == 'right') {
+    flex-direction: row-reverse;
+  }
+
+  +tablet-mobile() {
+    display: block;
+    width: auto;
+  }
+}
+
+.main-inner {
+  border-radius: $border-radius-inner;
+  box-sizing: border-box;
+  width: $content-wrap;
+
+  +tablet-mobile() {
+    border-radius: initial;
+    width: 100%;
+  }
+}
+
+.footer-inner {
+  if (hexo-config('sidebar.position') == 'right') {
+    padding-right: $sidebar-desktop + $sidebar-offset;
+  } else {
+    padding-left: $sidebar-desktop + $sidebar-offset;
+  }
+
+  +tablet-mobile() {
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+  }
+}
